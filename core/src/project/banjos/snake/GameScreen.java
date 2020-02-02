@@ -30,7 +30,7 @@ public class GameScreen implements Screen {
         viewport.apply();
 
         batch = new SpriteBatch();
-        scoreBitmapFont = new BitmapFont();
+        scoreBitmapFont = new BitmapFont(Gdx.files.internal("test.fnt"));
     }
 
     @Override
