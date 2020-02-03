@@ -28,6 +28,7 @@ public class Controls {
             touch.x = Gdx.input.getX();
             touch.y = Gdx.input.getY();
             viewport.unproject(touch);
+
         }
 
         if ((Gdx.input.isKeyPressed(Input.Keys.UP) || upBox.contains(touch))
@@ -38,6 +39,7 @@ public class Controls {
                 && currentDirection != 0) nextDirection = 2;
         else if ((Gdx.input.isKeyPressed(Input.Keys.LEFT) || leftBox.contains(touch))
                 && currentDirection != 1) nextDirection =3;
+
     }
 }
 

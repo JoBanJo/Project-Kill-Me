@@ -19,6 +19,7 @@ public class GameState {
     private Food mFood = new Food(boardSize);
     private int snakeLength = 3;
     public int scoreSnakeLength = 0;
+    public int scoreDead = 0;
 
     //Colour
     private float colourCounter = 0;
@@ -71,7 +72,9 @@ private void advance() {
     if (mBody.first().getX() == mFood.getX()
             && mBody.first().getY() == mFood.getY()) {
         snakeLength++;
-        scoreSnakeLength = + snakeLength - 3;
+        scoreSnakeLength = snakeLength - 3;
+
+        System.out.println(scoreSnakeLength);
 
 
         mFood.randomPos(boardSize);
@@ -80,12 +83,18 @@ private void advance() {
     for (int i = 1; i < mBody.size; i++) {
         if (mBody.get(i).getX() == mBody.first().getX()
                 && mBody.get(i).getY() == mBody.first().getY()) {
+            scoreDead = scoreSnakeLength;
             snakeLength = 3;
+            scoreSnakeLength = 0;
+
+           // System.out.println("Dead");
         }
+
     }
 
     while (mBody.size - 1 >= snakeLength) {
         mBody.removeLast();
+
 
     }
 }
@@ -93,6 +102,7 @@ private void advance() {
 public void draw(int width, int height, OrthographicCamera camera) {
     shapeRenderer.setProjectionMatrix(camera.combined);
     shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+
 
 
 
@@ -117,6 +127,7 @@ public void draw(int width, int height, OrthographicCamera camera) {
     for (Bodypart bp : mBody) {
         shapeRenderer.rect(bp.getX()*scaleSnake, bp.getY()*scaleSnake + yOffset,
                 scaleSnake, scaleSnake);
+
 
 
         //FOOD

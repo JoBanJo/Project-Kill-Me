@@ -16,6 +16,7 @@ public class GameScreen implements Screen {
 
     SpriteBatch batch;
     BitmapFont scoreBitmapFont;
+    BitmapFont scoreDead;
 
     private int width = 600;
     private int height = 1000;
@@ -30,7 +31,9 @@ public class GameScreen implements Screen {
         viewport.apply();
 
         batch = new SpriteBatch();
-        scoreBitmapFont = new BitmapFont(Gdx.files.internal("test.fnt"));
+        //scoreBitmapFont = new BitmapFont(Gdx.files.internal("test.fnt"));
+        scoreBitmapFont = new BitmapFont();
+        scoreDead = new BitmapFont();
     }
 
     @Override
@@ -52,8 +55,16 @@ public class GameScreen implements Screen {
 
 
         batch.begin();
-        scoreBitmapFont.setColor(1,1,1,1);
-        scoreBitmapFont.draw(batch, "Score: "+gameState.scoreSnakeLength, 25, 100);
+        //Score
+        scoreBitmapFont.setColor(0,1,1,1);
+        scoreBitmapFont.getData().setScale(2.0f);
+        scoreBitmapFont.draw(batch, "score: " + gameState.scoreSnakeLength, 65, 50);
+
+
+        //Deaths
+        scoreDead.setColor(0,1,1,1);
+        scoreDead.getData().setScale(2, 1.6f);
+        scoreDead.draw(batch, "High Score:" + gameState.scoreDead, 400, 470);
         batch.end();
     }
 
