@@ -71,7 +71,7 @@ private void advance() {
 
     if (mBody.first().getX() == mFood.getX()
             && mBody.first().getY() == mFood.getY()) {
-        snakeLength++;
+        snakeLength ++;
         scoreSnakeLength = snakeLength - 3;
 
         System.out.println(scoreSnakeLength);
@@ -109,10 +109,10 @@ public void draw(int width, int height, OrthographicCamera camera) {
 
     //Board colour
     shapeRenderer.setColor(1, 1, 1, 1);
-    shapeRenderer.rect(0, yOffset, width, width);
+    shapeRenderer.rect(0, yOffset, width, height-500);
 
-    shapeRenderer.setColor(0, 0, 0, 1);
-    shapeRenderer.rect(0+5, yOffset+5, width-5*2, width-5*2);
+    shapeRenderer.setColor(1, 0, 0, 1);
+    shapeRenderer.rect(0+5, yOffset+5, width-5*2, height-513);
 
     shapeRenderer.setColor(MathUtils.sin(colourCounter),-MathUtils.sin(colourCounter),1,1);
 

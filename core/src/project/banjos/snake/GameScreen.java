@@ -18,8 +18,8 @@ public class GameScreen implements Screen {
     BitmapFont scoreBitmapFont;
     BitmapFont scoreDead;
 
-    private int width = 600;
-    private int height = 1000;
+    private int width = 1080;
+    private int height = 1920;
 
     private OrthographicCamera camera = new OrthographicCamera(width, height);
     private Viewport viewport;
@@ -32,8 +32,8 @@ public class GameScreen implements Screen {
 
         batch = new SpriteBatch();
         //scoreBitmapFont = new BitmapFont(Gdx.files.internal("test.fnt"));
-        scoreBitmapFont = new BitmapFont();
-        scoreDead = new BitmapFont();
+        scoreBitmapFont = new BitmapFont(Gdx.files.internal("Calibri.fnt"));
+        scoreDead = new BitmapFont(Gdx.files.internal("Calibri.fnt"));
     }
 
     @Override
@@ -57,14 +57,14 @@ public class GameScreen implements Screen {
         batch.begin();
         //Score
         scoreBitmapFont.setColor(0,1,1,1);
-        scoreBitmapFont.getData().setScale(2.0f);
-        scoreBitmapFont.draw(batch, "score: " + gameState.scoreSnakeLength, 65, 50);
+        scoreBitmapFont.getData().setScale(1.4f);
+        scoreBitmapFont.draw(batch, "Score:  " + gameState.scoreSnakeLength, 20, 2230);
 
 
         //Deaths
         scoreDead.setColor(0,1,1,1);
-        scoreDead.getData().setScale(2, 1.6f);
-        scoreDead.draw(batch, "High Score:" + gameState.scoreDead, 400, 470);
+        scoreDead.getData().setScale(1.4f);
+        scoreDead.draw(batch, "High Score: " + gameState.scoreDead, 780, 860);
         batch.end();
     }
 
