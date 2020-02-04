@@ -10,7 +10,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 public class GameState {
 
     private int boardSize = 30;
-    private int yOffset = 400;
+    private int yOffset = 700;
 
     private ShapeRenderer shapeRenderer = new ShapeRenderer();
     private Controls controls =  new Controls();
@@ -104,35 +104,39 @@ public void draw(int width, int height, OrthographicCamera camera) {
     shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
 
 
+    shapeRenderer.setColor(1,1,1,1);
+    shapeRenderer.rect(0, yOffset, width, width);
 
-
-
-    //Board colour
-    shapeRenderer.setColor(1, 1, 1, 1);
-    shapeRenderer.rect(0, yOffset, width, height-500);
-
-    shapeRenderer.setColor(1, 0, 0, 1);
-    shapeRenderer.rect(0+5, yOffset+5, width-5*2, height-513);
-
-    shapeRenderer.setColor(MathUtils.sin(colourCounter),-MathUtils.sin(colourCounter),1,1);
+    shapeRenderer.setColor(0,0,0,1);
+    shapeRenderer.rect(0+5, yOffset+5, width-5*2, width-5*2);
 
     //Controls
-    shapeRenderer.rect(235, 265, 130, 130);
-    shapeRenderer.rect(235, 0, 130, 135);
-    shapeRenderer.rect(105, 135, 130, 130);
-    shapeRenderer.rect(365, 135, 130, 130);
+    //Up
+    shapeRenderer.setColor(0, 1, 0, 1);
+    shapeRenderer.rect(475, 275, 130, 130);
+    //Down
+    shapeRenderer.setColor(0,0,1,1);
+    shapeRenderer.rect(475, 0, 130, 135);
+    //Left
+    shapeRenderer.setColor(1,1,0,1);
+    shapeRenderer.rect(345, 140, 130, 130);
+    //Right
+    shapeRenderer.setColor(1,0,0,1);
+    shapeRenderer.rect(610, 140, 130, 130);
+
 
 
     float scaleSnake = width/boardSize;
+    shapeRenderer.setColor(MathUtils.cos(colourCounter),-MathUtils.sin(colourCounter),1,1);
     for (Bodypart bp : mBody) {
         shapeRenderer.rect(bp.getX()*scaleSnake, bp.getY()*scaleSnake + yOffset,
                 scaleSnake, scaleSnake);
 
+        shapeRenderer.rect(mFood.getX() * scaleSnake, mFood.getY() * scaleSnake + yOffset, scaleSnake, scaleSnake);
 
 
-        //FOOD
-    shapeRenderer.rect(mFood.getX() * scaleSnake, mFood.getY() * scaleSnake + yOffset, scaleSnake, scaleSnake);
-        }
-    shapeRenderer.end();
+
+            }
+        shapeRenderer.end();
     }
 }
