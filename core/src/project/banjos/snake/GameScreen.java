@@ -57,14 +57,14 @@ public class GameScreen implements Screen {
         batch.begin();
         //Score
         scoreBitmapFont.setColor(0,1,1,1);
-        scoreBitmapFont.getData().setScale(1.4f);
-        scoreBitmapFont.draw(batch, "Score:  " + gameState.scoreSnakeLength, 20, 2230);
+        scoreBitmapFont.getData().setScale(1);
+        scoreBitmapFont.draw(batch, "Score:  " + gameState.scoreSnakeLength, 40, 670);
 
 
         //Deaths
         scoreDead.setColor(0,1,1,1);
-        scoreDead.getData().setScale(1.4f);
-        scoreDead.draw(batch, "High Score: " + gameState.scoreDead, 780, 860);
+        scoreDead.getData().setScale(1);
+        scoreDead.draw(batch, "High Score: " + gameState.scoreDead, 870, 670);
         batch.end();
     }
 

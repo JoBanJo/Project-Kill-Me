@@ -86,6 +86,7 @@ private void advance() {
             scoreDead = scoreSnakeLength;
             snakeLength = 3;
             scoreSnakeLength = 0;
+            System.out.println("Nice you died");
 
            // System.out.println("Dead");
         }
@@ -94,8 +95,6 @@ private void advance() {
 
     while (mBody.size - 1 >= snakeLength) {
         mBody.removeLast();
-
-
     }
 }
 
